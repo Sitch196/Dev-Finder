@@ -1,0 +1,15 @@
+@media (max-width: 440px) {
+  html {
+    font-size: 85%;
+  }
+}
+@media (max-width: 390px) {
+  html {
+    font-size: 80%;
+  }
+}
+@media (max-width: 350px) {
+  html {
+    font-size: 75%;
+  }
+}
