@@ -1,19 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-function InfoContent() {
+function InfoContent(props: any) {
   return (
     <InfoStyle>
       <NameDate>
-        <h3>The OctoCat</h3>
+        <h3>{props.data.name}</h3>
         <p>Joined 31 January 2017</p>
       </NameDate>
-      <h4 style={{ color: "dodgerblue" }}>@octocat</h4>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique,
-        saepe modi sequi ullam minima repellendus id quibusdam labore amet.
-        Odio?
-      </p>
+      <h4 style={{ color: "dodgerblue" }}>@{props.data.login}</h4>
+      <p>{props.data.bio ? props.data.bio : "Bio Not Available"}</p>
     </InfoStyle>
   );
 }

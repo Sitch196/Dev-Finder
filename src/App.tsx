@@ -1,36 +1,66 @@
-import styled from "styled-components";
+import "./App.css";
+
+import styled, { createGlobalStyle } from "styled-components";
 import ImgContainer from "./Components/ImgContainer";
 import InfoContent from "./Components/InfoContent";
 import FollowerInfo from "./Components/FollowerInfo";
 import ContactInfo from "./Components/ContactInfo";
-import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
 
 // https://api.github.com/users/${userName}
+const GlobalStyle = createGlobalStyle`
+  body {
+    font-family: monospace;
+    color: #4B6A9B;
+  }
+`;
 
 function App() {
+  const [devName, setDevName] = useState("");
+  const [data, setData] = useState(null);
+
+  const handleInputChange = (e: any) => {
+    setDevName(e.target.value);
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`https://api.github.com/users/${devName}`);
+      const json = await response.json();
+      setData(json);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
-    <AppContainer>
-      <InputContainer>
-        <MainInput />
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-        >
-          <Button>Search</Button>
-        </form>
-      </InputContainer>
-      <BigWrapper>
-        <UpperContent>
-          <ImgContainer />
-          <InfoContent />
-        </UpperContent>
-        <LowerContent>
-          <FollowerInfo />
-          <ContactInfo />
-        </LowerContent>
-      </BigWrapper>
-    </AppContainer>
+    <>
+      <GlobalStyle />
+      <AppContainer>
+        <InputContainer>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+          <MainInput onChange={handleInputChange} />
+          <form onSubmit={handleSubmit}>
+            <Button>Search</Button>
+          </form>
+        </InputContainer>
+        {data && (
+          <BigWrapper>
+            <UpperContent>
+              <ImgContainer data={data} />
+              <InfoContent data={data} />
+            </UpperContent>
+            <LowerContent>
+              <FollowerInfo data={data} />
+              <ContactInfo data={data} />
+            </LowerContent>
+          </BigWrapper>
+        )}
+      </AppContainer>
+    </>
   );
 }
 
@@ -51,6 +81,9 @@ const Button = styled.button`
   cursor: pointer;
   border: none;
   border-radius: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
 
   &:hover {
     background-color: dodgerblue;
@@ -68,8 +101,10 @@ const InputContainer = styled.div`
 const BigWrapper = styled.div`
   width: 25rem;
   height: 20rem;
-  border: 1px solid black;
+  border-radius: 5px;
+  /* border: 1px solid black; */
   text-align: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 `;
 const AppContainer = styled.div`
   height: 100vh;
@@ -78,7 +113,7 @@ const AppContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 const UpperContent = styled.div`
   /* border: 1px solid black; */

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-function ImgContainer() {
+function ImgContainer(props: any) {
   return (
     <div>
-      <ImgStyle src="../../pics/lion.jpg" />
+      <ImgStyle src={props.data.avatar_url} />
     </div>
   );
 }

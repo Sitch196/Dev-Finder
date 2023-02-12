@@ -1,16 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 
-function ContactInfo() {
+function ContactInfo(props: any) {
   return (
     <Contact>
       <LocAndTwitter>
-        <p>San Francisco</p>
-        <a href="">gihubLink</a>
+        <p>{props.data.location}</p>
+        <a href="">
+          {props.data.html_url ? props.data.html_url : "Not Available"}
+        </a>
       </LocAndTwitter>
       <GitHubInfo>
-        <p>@dummytwiter</p>
-        <p>gitHubName</p>
+        <p>
+          @
+          {props.data.twitter_username
+            ? props.data.twitter_username
+            : "Not Available"}
+        </p>
+        <p>{props.data.login}</p>
       </GitHubInfo>
     </Contact>
   );
