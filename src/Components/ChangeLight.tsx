@@ -1,0 +1,54 @@
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+    
+    /* body {
+      background-color: ${(props: any) =>
+        props.dark ? "whitesmoke" : "#2B3442"};
+      
+    } */
+
+
+`;
+
+function ChangeLight() {
+  const [isDark, setIsDark] = useState(true);
+
+  const ChangeTheme = () => {
+    setIsDark(!isDark);
+  };
+  return (
+    <>
+      <GlobalStyle dark={isDark} />
+      <TitleContainer>
+        <div>DevFinder </div>
+        <Theme onClick={ChangeTheme}>
+          {isDark ? (
+            <FontAwesomeIcon icon={faMoon} />
+          ) : (
+            <FontAwesomeIcon icon={faSun} />
+          )}
+        </Theme>
+      </TitleContainer>
+    </>
+  );
+}
+
+export default ChangeLight;
+const TitleContainer = styled.div`
+  width: 25rem;
+  height: 3rem;
+  /* border: 1px solid red; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  color: black;
+`;
+const Theme = styled.div`
+  width: 3rem;
+  cursor: pointer;
+`;

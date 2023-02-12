@@ -8,12 +8,14 @@ import ContactInfo from "./Components/ContactInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
+import ChangeLight from "./Components/ChangeLight";
 
 // https://api.github.com/users/${userName}
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: monospace;
     color: #4B6A9B;
+    background-color: whitesmoke;
   }
 `;
 
@@ -40,6 +42,7 @@ function App() {
     <>
       <GlobalStyle />
       <AppContainer>
+        <ChangeLight />
         <InputContainer>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
           <MainInput onChange={handleInputChange} />
@@ -68,10 +71,13 @@ const MainInput = styled.input`
   width: 15rem;
   height: 2rem;
   border: none;
-  padding-left: 0.5rem;
+  background-color: white;
+  /* padding-left: 0.4rem; */
+  font-family: monospace;
+  font-size: 1rem;
   border-radius: 5px;
   &:focus {
-    outline: 1px solid gray;
+    outline: none;
   }
 `;
 const Button = styled.button`
@@ -94,6 +100,7 @@ const InputContainer = styled.div`
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   width: 25rem;
   height: 3rem;
+  background-color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -102,15 +109,17 @@ const BigWrapper = styled.div`
   width: 25rem;
   height: 20rem;
   border-radius: 5px;
+  background-color: white;
   /* border: 1px solid black; */
   text-align: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 `;
 const AppContainer = styled.div`
+  margin-top: 2rem;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   gap: 1.5rem;
   /* border: 1px solid red; */

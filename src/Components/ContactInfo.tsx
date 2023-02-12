@@ -1,14 +1,13 @@
-import React from "react";
 import styled from "styled-components";
 
 function ContactInfo(props: any) {
   return (
     <Contact>
       <LocAndTwitter>
-        <p>{props.data.location}</p>
-        <a href="">
+        <p>{props.data.location ? props.data.location : "Not Available"}</p>
+        <GitLink href={props.data.html_url} target="_blank">
           {props.data.html_url ? props.data.html_url : "Not Available"}
-        </a>
+        </GitLink>
       </LocAndTwitter>
       <GitHubInfo>
         <p>
@@ -39,5 +38,9 @@ const GitHubInfo = styled.div`
   p {
     font-family: monospace;
   }
+`;
+const GitLink = styled.a`
+  text-decoration: none;
+  color: #4b6a9b;
 `;
 export default ContactInfo;
