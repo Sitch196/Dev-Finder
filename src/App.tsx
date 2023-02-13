@@ -21,18 +21,19 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [devName, setDevName] = useState("");
-  const [data, setData] = useState(null);
+  const [data, setData] = useState("");
 
   const handleInputChange = (e: any) => {
     setDevName(e.target.value);
   };
-
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       const response = await fetch(`https://api.github.com/users/${devName}`);
       const json = await response.json();
+      if (!response.ok) return;
       setData(json);
+      setDevName("");
     } catch (error) {
       console.error(error);
     }
@@ -45,7 +46,12 @@ function App() {
         <ChangeLight />
         <InputContainer>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <MainInput onChange={handleInputChange} />
+          <MainInput
+            value={devName}
+            onChange={handleInputChange}
+            placeholder="Search GitHub Username"
+          />
+          <Results>{!data ? "No Results" : ""}</Results>
           <form onSubmit={handleSubmit}>
             <Button>Search</Button>
           </form>
@@ -68,10 +74,11 @@ function App() {
 }
 
 const MainInput = styled.input`
-  width: 15rem;
+  width: 10rem;
   height: 2rem;
   border: none;
   background-color: white;
+  /* border: 1px solid red; */
   /* padding-left: 0.4rem; */
   font-family: monospace;
   font-size: 1rem;
@@ -90,10 +97,16 @@ const Button = styled.button`
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 0.8rem;
+  margin: 0.3rem 0;
 
   &:hover {
     background-color: dodgerblue;
   }
+`;
+const Results = styled.p`
+  color: red;
+  font-weight: bold;
 `;
 const InputContainer = styled.div`
   border-radius: 5px;
