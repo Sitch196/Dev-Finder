@@ -123,14 +123,14 @@ const BigWrapper = styled.div`
   width: 25rem;
   height: 20rem;
   border-radius: 5px;
-  background-color: white;
+  background-color: whitesmoke;
   /* border: 1px solid black; */
   text-align: center;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 `;
 const AppContainer = styled.div`
   margin-top: 2rem;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   /* justify-content: center; */
@@ -141,11 +141,11 @@ const AppContainer = styled.div`
 const UpperContent = styled.div`
   /* border: 1px solid black; */
   display: flex;
-  height: 7rem;
+  /* height: 7rem; */
 `;
 const LowerContent = styled.div`
   /* border: 1px solid black; */
   width: 25rem;
-  margin-top: 3rem;
+  margin-top: 1rem;
 `;
 export default App;

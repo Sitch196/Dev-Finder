@@ -48,6 +48,7 @@ const Location = styled.div`
     margin-left: 0.25rem;
   }
 `;
+
 const Linkk = styled.div`
   display: flex;
   align-items: center;
@@ -67,13 +68,12 @@ const Computer = styled.div`
 const Contact = styled.div`
   display: flex;
   justify-content: space-evenly;
+  font-size: 95%;
 `;
 const LocAndTwitter = styled.div`
-  p,
   a {
     font-family: monospace;
   }
-  /* border: 1px solid black; */
 `;
 const GitHubInfo = styled.div`
   /* border: 1px solid black; */
