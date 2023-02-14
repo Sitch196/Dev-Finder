@@ -50,6 +50,11 @@ function App() {
           <MainInput
             value={devName}
             onChange={handleInputChange}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                handleSubmit(event);
+              }
+            }}
             placeholder="Search GitHub Username"
           />
           <Results>{!data ? "No Results" : ""}</Results>
@@ -82,7 +87,7 @@ const MainInput = styled.input`
   /* border: 1px solid red; */
   /* padding-left: 0.4rem; */
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 0.8rem;
   border-radius: 5px;
   &:focus {
     outline: none;
