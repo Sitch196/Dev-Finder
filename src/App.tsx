@@ -7,7 +7,7 @@ import FollowerInfo from "./Components/FollowerInfo";
 import ContactInfo from "./Components/ContactInfo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ChangeLight from "./Components/ChangeLight";
 
 // https://api.github.com/users/${userName}
@@ -32,6 +32,7 @@ function App() {
       const response = await fetch(`https://api.github.com/users/${devName}`);
       const json = await response.json();
       if (!response.ok) return;
+      console.log(json);
       setData(json);
       setDevName("");
     } catch (error) {

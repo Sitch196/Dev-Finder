@@ -5,33 +5,34 @@ import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
     
-    /* body {
+    * {
       background-color: ${(props: any) =>
         props.dark ? "whitesmoke" : "#2B3442"};
       
-    } */
+    }
 
-
-`;
+  
+    
+    `;
 
 function ChangeLight() {
-  const [isDark, setIsDark] = useState(true);
+  const [isLight, setIsLight] = useState(true);
 
   const ChangeTheme = () => {
-    setIsDark(!isDark);
+    setIsLight(!isLight);
   };
   return (
     <>
-      <GlobalStyle dark={isDark} />
+      <GlobalStyle dark={isLight} />
       <TitleContainer>
         <div>DevFinder </div>
-        <Theme onClick={ChangeTheme}>
-          {isDark ? (
+        {/* <Theme onClick={ChangeTheme}>
+          {isLight ? (
             <FontAwesomeIcon icon={faMoon} />
           ) : (
             <FontAwesomeIcon icon={faSun} />
           )}
-        </Theme>
+        </Theme> */}
       </TitleContainer>
     </>
   );
