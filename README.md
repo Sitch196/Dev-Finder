@@ -1,5 +1,5 @@
 # Dev-Finder
-![image](https://user-images.githubusercontent.com/101527237/219126501-195a77da-fb0e-4aa7-a41f-4dc96526c137.png)
+![image](https://user-images.githubusercontent.com/101527237/219135621-dcc01d38-affa-435f-b10c-f8c030246173.png)
 
 Simple Dev finder , it lets you find developer using their gitHub name and with given link you can easily check them out
 
